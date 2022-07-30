@@ -1,0 +1,162 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Dosis', sans-serif,'Indie Flower';
+    font-size: 16px;
+    font-weight: bold;
+}  
+
+.todo-container {
+    color:#15703c;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;    /* rounded edges apparently */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-color: #15703c;  
+}
+
+.todo {
+    width: 80%;
+}
+h2 {
+    padding: 10px;
+    font-size: 2rem;
+}
+
+input {
+    /* needs font family declared seperarely */
+    margin-bottom: 2px;
+    padding: 5px;
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    font-family: 'Dosis', sans-serif,'Indie Flower';
+    color: #15703c;;
+    font-size: 16px;
+    font-weight: bold;
+}
+textarea {
+    /* needs font family declared seperarely */
+    display:block; /* gets shoved into a new line doesnt exist with anything else on same line */
+    border-radius: 5px;
+    width: 100%;
+    padding: 2px;
+    font-family: 'Dosis', sans-serif,'Indie Flower';
+    color: #15703c;;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.todo-header button {
+    /* give it a colour */   /* */
+    display: block;
+    color: #15703c;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+    font-family: 'Dosis', sans-serif,'Indie Flower';
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    
+}
+ul {
+    list-style: none;
+}
+.todo-list-item {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    font-weight: bold;
+    color: #15703c;
+    font-family: 'Dosis', sans-serif,'Indie Flower';
+}
+.todo-list-item-title {
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.todo-list-item-content {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: lighter;
+}
+
+.todo-list-item form {
+    width: 100%;
+    display: flex;
+}
+
+.todo-list-item input {
+    flex-grow: 2;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.todo-list-item .confirm {
+    color: #15703c;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 5px;
+    max-height: 30px;
+    display: block;
+    font-family: 'Dosis', sans-serif,'Indie Flower';
+    background-color: transparent;
+    font-weight: bold;
+
+}
+.todo-list-item .cancel {
+    color: #15703c;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 5px;
+    max-height: 30px;
+    display: block;
+    font-family: 'Dosis', sans-serif,'Indie Flower';
+    font-weight: bold;
+}
+.todo-list-item .div{
+    flex-grow: 2;
+}
+
+.todo-list-item .edit {
+    margin-right: 10px;
+    color: #15703c;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: auto;
+
+}
+.todo-list-item .remove {
+    margin-right: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #15703c;
+    
+}
+
+ /* input, button, textarea, select { font: inherit; } to make things in form inherit */
