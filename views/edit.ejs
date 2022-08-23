@@ -21,9 +21,9 @@
                     <% if (data._id==idTask) { %>
                         <li class='todo-list-item'>
                         
-                            <form action="/edit/<%= data._id%>" method = "POST">
-                                <input type="text" name="title" value="<%= data.title %>">
-                                <textarea name="content"> <%= data.content %></textarea>
+                            <form class="form"data-doc="<%= data._id%>"  action="/edit/<%= data._id%>" method = "POST">
+                                <input  class ="title" type="text" name="title" value="<%= data.title %>">
+                                <textarea class="textarea"  name="content" > <%= data.content %></textarea>
                                 <button type="submit" class="confirm">confirm</button>
                                 <a href="/" class="cancel">cancel</a>
                         </form>
@@ -37,10 +37,10 @@
                                 <%= data.content %> 
                            </div>
                            <a href="/edit/<%=data._id%>" class="edit"
-                            ><span><i class="fa-solid fa-pen-to-square"></i></span>   <!--input here class for icons and put icons in--> 
+                            ><span><i class="fa-solid fa-pen-to-square"></i></span>   
                            </a>
                            <a href="/remove/<%=data._id%>" class="remove"
-                            ><span><i class="fa-solid fa-xmark"></i></span>   <!--input here class for icons and put icons in--> 
+                            ><span><i class="fa-solid fa-xmark"></i></span>   
                            </a>
                              </li>
                            <% } %>
@@ -48,5 +48,35 @@
                         </ul>
                     </div>
                 </section>
+                <script>
+                let toUpdate = document.querySelector('.form')
+                toUpdate.addEventListener('submit', async (e) => {
+                    e.preventDefault()
+                    let info =  document.getElementsByClassName('textarea')[0].value
+                    let title =  document.getElementsByClassName('title')[0].value
+                    console.log(info, title)
+                    const id =`/edit/${toUpdate.dataset.doc}`
+                    console.log(id)
+                    try{
+        const response = await fetch(id, {
+                        method: 'put',
+                        headers: {'Content-type': 'application/json'},
+                         body: JSON.stringify({data:info, title:title})
+                    })
+                    const data = await response.json()
+                    console.log(data)
+                    window.location.href = data.redirect
+
+
+                }
+                catch(err){
+        console.log(err)
+    }
+            })
+
+                
+                
+                
+                </script>
             </body>
             </html>

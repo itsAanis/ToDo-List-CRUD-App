@@ -6,6 +6,7 @@ require('dotenv').config()
 const { default: mongoose } = require('mongoose')
 const Todos = require("./models/todotasks")
 const morgan = require('morgan')
+const homeRoutes = require('./routes/homeRoutes')
 
 //view engine
 app.set("view engine", "ejs")
@@ -20,73 +21,11 @@ mongoose.connect(process.env.dburi, {useNewUrlparser:true, useUnifiedTopology: t
 app.use(express.static('public'))    
 app.use(express.urlencoded({extended: true})) 
 app.use(morgan('dev'))
+app.use(express.json())
 
 
 
 //routes
-app.get('/', (req, res) => {
-        Todos.find()
-        .then(result => {
-            res.render('index.ejs', {todoTask:result})
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    })
 
-app.post('/', (req, res) => {
-    console.log(req.body)
-    const todoTask = new Todos({
-        title: req.body.title,
-        content: req.body.content
-    })
-    todoTask.save()
-    .then(result => {
-        res.redirect('/');
-      })
-    .catch(err => {
-        console.log(err)
-    })
-    })
-
-app
-    .route("/edit/:id")
-    .get((req,res) => {
-    const id = req.params.id;
-
-    Todos.find()
-    .then(result => {
-        res.render('edit.ejs',{
-            todoTask: result, idTask: id})
-    })
-})
-    .post((req,res) => {
-        const id =req.params.id
-        Todos.findByIdAndUpdate(id, {
-            title: req.body.title,
-            content: req.body.content
-        })
-        .then(result => {
-            res.status(200).redirect('/')
-        })
-        .catch(err => {
-        res.status(500).send(err)
-      
-        })
-    })
-
-
-
-app
-    .route("/remove/:id")
-    .get((req, res) => {
-        const id = req.params.id
-        Todos.findByIdAndRemove(id)
-        .then(result => {
-            res.redirect('/')
-        })
-        .catch(err => {
-            res.status(500).send({err: 'could not delete the to-do'})
-        })    
-    })
+app.use(homeRoutes)
    
