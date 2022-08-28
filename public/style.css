@@ -152,7 +152,7 @@ ul {
 .todo-list-item .remove {
     margin-right: 5px;
     text-decoration: none;
-    cursor: pointer;
+    cursor:pointer;
     color: #15703c;
     
 }
